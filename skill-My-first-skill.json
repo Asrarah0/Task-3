@@ -1,0 +1,442 @@
+{
+  "intents": [
+    {
+      "intent": "الكود",
+      "examples": [
+        {
+          "text": "يلا"
+        },
+        {
+          "text": "يلا طيب اطلع برة"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "ترحيب",
+      "examples": [
+        {
+          "text": "السلام عليكم"
+        },
+        {
+          "text": "السلام عليكم ورحمة الله"
+        },
+        {
+          "text": "السلام عليكم ورحمة الله وبركاته"
+        },
+        {
+          "text": "اهلا"
+        },
+        {
+          "text": "اهلا وسهلا"
+        },
+        {
+          "text": "سلام"
+        },
+        {
+          "text": "هاي"
+        }
+      ],
+      "description": "اهلا"
+    },
+    {
+      "intent": "نبذة",
+      "examples": [
+        {
+          "text": "15يوم"
+        },
+        {
+          "text": "اتفقنا"
+        },
+        {
+          "text": "ارجع"
+        },
+        {
+          "text": "اعطيني النبذة"
+        },
+        {
+          "text": "اللسته"
+        },
+        {
+          "text": "ايوة"
+        },
+        {
+          "text": "رجع اللسته"
+        },
+        {
+          "text": "سولف"
+        },
+        {
+          "text": "طيب"
+        },
+        {
+          "text": "عيد"
+        },
+        {
+          "text": "كمل"
+        },
+        {
+          "text": " لربطها بقاعدة البيانات php ولغة html لغة "
+        },
+        {
+          "text": "لسليم مهمة رقم 1 لشركة الاساليب الذكية واخذ درجة في التدريب الصيفيي"
+        },
+        {
+          "text": "لف"
+        },
+        {
+          "text": "نعم"
+        },
+        {
+          "text": "هات"
+        },
+        {
+          "text": "وريني"
+        },
+        {
+          "text": "يب"
+        },
+        {
+          "text": "يس"
+        },
+        {
+          "text": "يلا"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "نهاية",
+      "examples": [
+        {
+          "text": "اك"
+        },
+        {
+          "text": "اوك"
+        },
+        {
+          "text": "باي"
+        },
+        {
+          "text": "تمام"
+        },
+        {
+          "text": "خلاص"
+        },
+        {
+          "text": "خلصت"
+        },
+        {
+          "text": "سلام"
+        },
+        {
+          "text": "كفبت"
+        },
+        {
+          "text": "كفيت ووفيت"
+        },
+        {
+          "text": "لا"
+        },
+        {
+          "text": "مع السلامة"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "الاسرار",
+      "values": [],
+      "fuzzy_match": false
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ما فهمت ممكن تكتب كويس"
+              },
+              {
+                "text": "امممم,ما فهمت"
+              },
+              {
+                "text": "عادي تعيد"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_9_1624977413585",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "نسولف",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "تبغى تسولف ولا خلاص كفتك المعلومات ؟لان سوالفي خلصت"
+              },
+              {
+                "text": "خلاص كذا خلصنا عندك سوالف ؟لان انا ماعندي سوالف خلصت"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_6_1624999031906"
+      },
+      "conditions": "#نبذة",
+      "dialog_node": "node_1_1624982687100",
+      "previous_sibling": "node_4_1624979556380"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome - copy 1",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "اهلا,انورت واسفرت اقلك سر ؟"
+              },
+              {
+                "text": "هلا,نورت بعطيك لسته للاسرار وانت اختار جاهز ؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "#ترحيب",
+      "dialog_node": "node_1_1625004929116",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "ترحيب",
+      "output": {
+        "generic": [
+          {
+            "title": "الاسرار الي اقدر اقولها",
+            "options": [
+              {
+                "label": "مدة التنفيذ",
+                "value": {
+                  "input": {
+                    "text": "15يوم"
+                  }
+                }
+              },
+              {
+                "label": "سبب تصميم الواجهة",
+                "value": {
+                  "input": {
+                    "text": "لسليم مهام  لشركة الاساليب الذكية واخذ درجة في التدريب الصيفيي"
+                  }
+                }
+              },
+              {
+                "label": "اللغات المستخدمة ",
+                "value": {
+                  "input": {
+                    "text": " لربطها بقاعدة البيانات php ولغة html لغة "
+                  }
+                }
+              },
+              {
+                "label": "مابغا اقرا اسرارك",
+                "value": {
+                  "input": {
+                    "text": "يلا طيب اطلع برة"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "#نبذة",
+      "dialog_node": "node_4_1624976531975",
+      "previous_sibling": "node_1_1625004929116"
+    },
+    {
+      "type": "standard",
+      "title": "الكو2",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "https://github.com/Asrarah0/Task-1   <-- رابط الكود"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_1_1624982687100"
+      },
+      "conditions": "#نبذة",
+      "dialog_node": "node_4_1624979556380",
+      "previous_sibling": "node_6_1624979207021"
+    },
+    {
+      "type": "standard",
+      "title": "الكود",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "اوريك الكود؟"
+              },
+              {
+                "text": "تبى تشوف الكود؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_4_1624979556380"
+      },
+      "conditions": "#الكود",
+      "dialog_node": "node_6_1624979207021",
+      "previous_sibling": "node_4_1624976531975"
+    },
+    {
+      "type": "standard",
+      "title": "نكته",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "الصراحة فكرت فيها وماعندي سوالف يلا باي"
+              },
+              {
+                "text": "جلست ادور سوالف مالقيت ,شكرا على وقتك مع السلامة"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#نبذة",
+      "dialog_node": "node_6_1624999031906",
+      "previous_sibling": "node_1_1624982687100"
+    },
+    {
+      "type": "standard",
+      "title": "مع السلامة",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "مع السلامة"
+              },
+              {
+                "text": "اشوفك على الخير"
+              },
+              {
+                "text": "في امن الله "
+              },
+              {
+                "text": "شكرا على وقتك "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#نهاية",
+      "dialog_node": "node_9_1624977413585",
+      "previous_sibling": "node_6_1624999031906"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "اهلا,انورت واسفرت اقلك سر ؟"
+              },
+              {
+                "text": "هلا,نورت بعطيك لسته للاسرار وانت اختار جاهز ؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "My first skill",
+  "language": "en",
+  "description": ""
+}
